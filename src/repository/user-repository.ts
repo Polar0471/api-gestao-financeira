@@ -10,8 +10,7 @@ export const findUserByEmailRepository = async (email: string): Promise<User|und
 }
 
 export const validateUserPasswordRepository = async (password: string, user: User): Promise<boolean> => {
-    const isValidPassword = bcrypt.compare(user.password, password)
-    return isValidPassword
+    return await bcrypt.compare(password, user.password)
 }
 
 export const userRegisterRepository = async (newUser: User) => {
