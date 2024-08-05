@@ -2,6 +2,13 @@ import fs from "fs/promises"
 import { User } from "../models/user-models"
 import bcrypt from "bcrypt"
 
+export const findUserByIdRepository = async (id: string): Promise<User|undefined> => {
+    const data = await fs.readFile("src/data/userData.json", "utf-8")
+    const users: User[] = await JSON.parse(data)
+    const user = users.find(user => user.id === id)
+    return user
+}
+
 export const findUserByEmailRepository = async (email: string): Promise<User|undefined> => {
     const data = await fs.readFile("src/data/userData.json", "utf-8")
     const users: User[] = await JSON.parse(data)

@@ -3,7 +3,7 @@ import HttpResponse from "../models/http-model";
 export const ok = async (data: any): Promise<HttpResponse> => {
     return {
         statusCode: 200,
-        body: "succesful"
+        body: data
     }
 }
 
@@ -26,4 +26,11 @@ export const badRequest = async (message: string): Promise<HttpResponse> => {
         statusCode: 400,
         body: { error: message }
     };
+}
+
+export const unauThorized = async (data: any): Promise<HttpResponse> => {
+    return {
+        statusCode: 401,
+        body: data
+    }
 }
